@@ -1,0 +1,164 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 45,
+  "spacing": 0,
+  "modules-right": [
+    "tray",
+    "cpu",
+    "memory",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "custom/power"
+  ],
+  "modules-center": ["custom/weather","clock"],
+  
+  "modules-left": [
+    "custom/logo",
+    "niri/workspaces",
+    "niri/window",
+    "custom/mpd"
+  ],
+  "custom/logo":{
+      "exec": "echo 'spruce'",
+      "format": "󰣇 {text}"
+  },
+  "custom/mpd": {
+	"format": "🎤 {text}",
+	//"max-length": 15,
+	"interval": 10,
+	"exec": "mpc current",
+	"exec-if": "pgrep mpd",
+	"on-click": "mpc toggle",
+    "on-double-click":"mpc stop",
+	"on-click-right": "mpc next"
+  },
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/wt.sh Fuxin,China",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600
+  },
+  "niri/workspaces":{
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+    "*":[1,2,3,4,5,6,7]
+    },
+    "format-icons":{
+    "1": "",
+    "2": "",
+    "3": "󰇮",
+    "4": "",
+    "5": "",
+    "6": "",
+    "active": "󱓻"
+    } 
+  },
+  "custom/lock": {
+  "format": "  ",
+  "on-click": "swaylock -i ~/Pictures/7.jpg",
+  "tooltip": true,
+  "tooltip-format": "Lock"
+  },
+  "custom/reboot": {
+    "format": "  ",
+    "on-click": "systemctl reboot",
+    "tooltip": true,
+    "tooltip-format": "Reboot"
+  },
+  "custom/power": {
+    "format": "  ",
+    "on-click": "systemctl poweroff",
+    "tooltip": true,
+    "tooltip-format": "PowerOff"
+  },
+  "network": {
+    "format-wifi": " 󰤨 {essid} ",
+    "format-ethernet": " Wired ",
+    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
+    "format-linked": " 󱘖 {ifname} (No IP) ",
+    "format-disconnected": "  Disconnected ",
+    "format-alt": " 󰤨 {signalStrength}% ",
+    "interval": 1
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": " {icon} {capacity}% ",
+    "format-charging": " 󱐋{capacity}%",
+	  "interval": 1,
+    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+    "tooltip": true
+  },
+  "pulseaudio": {
+    "format": "{icon}{volume}% ",
+    "format-muted": " 󰖁 0% ",
+    "format-icons": {
+      "headphone": "  ",
+      "hands-free": "  ",
+      "headset": "  ",
+      "phone": "  ",
+      "portable": "  ",
+      "car": "  ",
+      "default": [
+        "  ",
+        "  ",
+        "  "
+      ]
+    },
+    "on-click-right": "pavucontrol -t 3",
+    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "tooltip": true,
+    "tooltip-format": "Current System Volume: {volume}%"
+  },
+  "memory": {
+    "format": "  {used:0.1f}G/{total:0.1f}G ",
+    "tooltip": true,
+    "tooltip-format": "Current Memory Proportion: {used:0.2f}G/{total:0.2f}G"
+  },
+  "cpu": {
+    "format": "  {usage}% ",
+    "tooltip": true
+  },
+  "clock": {
+    "interval": 1,
+    "timezone": "Asia/Shanghai",
+    "format": "  {:%H:%M} ",
+    "tooltip": true,
+    "tooltip-format": "{:%Y,%m,%d}"
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 3
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}{percent}% ",
+    "tooltip": true,
+    "tooltip-format": "Current Backlight: {percent}%",
+    "format-icons": [
+      " 󰃞 ",  // 暗 - 深灰
+      " 󰃝 ",  // 中 - 灰
+      " 󰃟 ",  // 亮 - 柠檬黄
+      " 󰃠 "   // 最亮 - 金色
+    ]
+  },
+  "bluetooth": {
+    "format": "  {status} ",
+    "format-connected": "  {device_alias} ",
+    "format-connected-battery": "  {device_alias}{device_battery_percentage}% ",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  }
+}
+
