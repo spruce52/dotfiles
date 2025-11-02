@@ -4,26 +4,36 @@
   "height": 45,
   "spacing": 0,
   "modules-right": [
-    "tray",
-    "cpu",
-    "memory",
+//  "tray",
     "network",
+//  "bluetooth",
     "pulseaudio",
     "backlight",
     "battery",
+    "cpu",
+    "memory",
+//  "custom/weather",
+//  "clock"
+    "custom/reboot",
     "custom/power"
   ],
-  "modules-center": ["custom/weather","clock"],
+  "modules-center": ["clock","niri/window"],
   
   "modules-left": [
     "custom/logo",
+//  "cpu",
+//  "memory",
     "niri/workspaces",
-    "niri/window",
-    "custom/mpd"
+//  "niri/window",
+    "custom/mpd",
+    "tray"
   ],
   "custom/logo":{
       "exec": "echo 'spruce'",
-      "format": "󰣇 {text}"
+      "format": "󰣇 {text}",
+      "on-click":"swaylock -i ~/Pictures/7.jpg" ,
+      "tooltip": true,
+      "tooltip-format": "liuzechen's archlinux"
   },
   "custom/mpd": {
 	"format": "🎤 {text}",

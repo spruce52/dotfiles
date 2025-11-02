@@ -1,0 +1,14 @@
+[window]
+dimensions = { columns = 80, lines = 24 }
+padding = { x = 4, y = 0 }
+opacity = 0.8
+blur = true
+
+[font]
+normal.family = " ComicShannsMono Nerd Font"
+size = 16.0
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/{catppuccin_mocha}.toml"
+]

@@ -32,15 +32,18 @@ require("lazy").setup({
   end,
   dependencies = { {'nvim-tree/nvim-web-devicons'}}
     },
-  
-    {
+    -- install with yarn or npm
+{
   "iamcco/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  build = "cd app && yarn install",
   init = function()
     vim.g.mkdp_filetypes = { "markdown" }
   end,
   ft = { "markdown" },
-},
+},    
+
+
     {'iamcco/mathjax-support-for-mkdp'},
     -- 状态栏
     { "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, lazy = false },

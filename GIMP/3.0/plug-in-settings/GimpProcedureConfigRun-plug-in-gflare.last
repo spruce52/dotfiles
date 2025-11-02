@@ -1,0 +1,15 @@
+# settings
+
+(gflare-name "Default")
+(center-x 128)
+(center-y 128)
+(radius 100)
+(rotation 0)
+(hue 0)
+(vector-angle 60)
+(vector-length 400)
+(use-asupsample no)
+(asupsample-max-depth 3)
+(asupsample-threshold 0.20000000000000001)
+
+# end of settings
